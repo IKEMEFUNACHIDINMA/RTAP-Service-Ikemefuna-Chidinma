@@ -8,5 +8,10 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
+
+# Force the port and cap the memory so Render's free tier doesn't kill the app
+ENV PORT=8080
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT java -Xmx256m -Dserver.port=$PORT -jar app.jar
+
+ENTRYPOINT ["java", "-Xmx256m", "-jar", "app.jar"]
