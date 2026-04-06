@@ -61,7 +61,7 @@ public class AiSummarizationService {
         HttpEntity<GeminiRequest> requestEntity = new HttpEntity<>(requestBody, headers);
 
         // 5. Construct the specific URL with your API Key
-        String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + geminiApiKey;
+        String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + geminiApiKey;
 
         try {
             // 6. Make the POST request. We use JsonNode to easily parse the response tree.
